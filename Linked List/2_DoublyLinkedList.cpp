@@ -21,6 +21,7 @@ class Node{
             delete next;
             this -> next = NULL; 
         }
+        cout<<"Deleted node is "<<value<<endl; 
     }
 
 };
@@ -85,6 +86,40 @@ void insertAtPosition(Node * &head, Node *&tail, int position, int data){
         temp -> prev = curr; 
     }
 }
+ // Deletion of Linked List 
+ void deleteNode(Node * &head, Node * &tail, int position){
+    if(head == NULL && tail == NULL){
+        cout<<"Linked list Is Empty"<<endl; 
+        return;
+
+    }
+    if(position == 1){
+        Node * temp = head; 
+        temp -> next -> prev = NULL;  
+        head = temp -> next;
+        temp -> next  = NULL;
+        delete temp; 
+    }
+    else{
+        Node * curr = head; 
+        Node * back = NULL;
+        int count = 0; 
+
+        while(count < position - 1)
+        {
+            back = curr; 
+            curr = curr -> next; 
+            count++; 
+        }
+        curr -> prev = NULL;
+        back -> next = curr -> next;
+        curr -> next = NULL;
+        delete curr;
+        if(back -> next == NULL){
+            tail = back;
+        }
+    }
+ }
 
 // Linked List Traversal 
 void print(Node * head){
@@ -107,6 +142,8 @@ int main()
     insertAtEnd(head, tail, 5);
     print(head);
     insertAtPosition(head, tail,1,3);
+    print(head);
+    deleteNode(head, tail, 3);
     print(head);
     cout<<"head:-"<<head -> data <<endl; 
     cout<<"tail:-"<<tail -> data <<endl; 
