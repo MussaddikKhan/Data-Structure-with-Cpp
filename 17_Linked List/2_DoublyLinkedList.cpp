@@ -12,8 +12,8 @@ class Node{
         this -> next = NULL; 
         this -> prev = NULL; 
     }
-    // Destructor
 
+    // Destructor
     ~Node(){
         int value = this -> data; 
 
@@ -27,7 +27,6 @@ class Node{
 };
 
 //Inser At head ; 
-
 void insertAtHead(Node * &head, Node * &tail, int data ){
     if(head == NULL){
         Node * temp = new Node(data);
@@ -44,7 +43,6 @@ void insertAtHead(Node * &head, Node * &tail, int data ){
 }
 
 // Insert At End; 
-
 void insertAtEnd(Node * &head, Node * &tail, int data){
     if(tail == NULL){
         Node * temp = new Node(data);
@@ -63,7 +61,6 @@ void insertAtEnd(Node * &head, Node * &tail, int data){
 }
 
 // Insert At Specefic Position 
-
 void insertAtPosition(Node * &head, Node *&tail, int position, int data){
     if(position == 1){
         insertAtHead(head,tail,data);
